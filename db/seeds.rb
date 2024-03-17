@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+25.times do
+  Article.create(
+    article_type: Faker::Cannabis.type,
+    medical_use: Faker::Cannabis.medical_use,
+    classification: "#{Faker::Cannabis.type}",
+    strain:  Faker::Cannabis.strain,
+    category: Faker::Cannabis.category,
+    brand: Faker::Cannabis.brand
+  )
+end

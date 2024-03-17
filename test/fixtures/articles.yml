@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  article_type: MyString
+  medical_use: MyString
+  classification: MyString
+  strain: MyString
+  category: MyString
+  brand: MyString
+
+two:
+  article_type: MyString
+  medical_use: MyString
+  classification: MyString
+  strain: MyString
+  category: MyString
+  brand: MyString
