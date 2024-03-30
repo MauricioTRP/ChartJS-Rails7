@@ -19,3 +19,11 @@ require 'faker'
     brand: Faker::Cannabis.brand
   )
 end
+
+100.times do
+  Venta.create(
+    date: Faker::Date.between(from: '2023-09-23', to: '2024-03-25'),
+    article: Article.all.sample,
+    sale_price: rand(1700..20200)
+  )
+end

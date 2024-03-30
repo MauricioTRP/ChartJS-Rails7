@@ -6,10 +6,10 @@
 
             <div class="mx-auto pt-3" style="width: 800px;">
                 <canvas 
-                    id="acquisitions" 
-                    data-controller="chart" 
-                    data-chart-total-value="<%= [1500, 2000, 1800, 1600, 1750, 2100, 2020] %>"
-                    data-chart-date-value="<%= ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio'] %>">
+                    id="sales"
+                    data-controller="chart"
+                    data-chart-sales-value="<%= @ventas.to_json %>"
+                >
                 </canvas>
             </div>
         

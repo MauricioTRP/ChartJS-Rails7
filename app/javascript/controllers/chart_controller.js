@@ -4,19 +4,12 @@ import Chart from 'chart.js/auto'
 // Connects to data-controller="chart"
 export default class extends Controller {
   static values = {
-    date: Array,
-    total: Array
+    sales: Object
   }
   connect() {
-    let months = [];
-    console.log(this.dateValue)
-    console.log(this.totalValue)
-
-    const data = [];
-    this.dateValue.forEach((date, index) => {
-      data.push({ date: date, value: this.totalValue[index]})
-    });
     const chartContainer = this.element;
+    console.log("sales Value",this.salesValue)
+    const data = this.salesValue;
 
     (async function() {
       new Chart(
@@ -24,11 +17,11 @@ export default class extends Controller {
         {
           type: 'bar',
           data: {
-            labels: data.map(row => row.date),
+            labels: Object.keys(data),
             datasets: [
               {
-                label: 'Acquisitions by Month',
-                data: data.map(row => row.value)
+                label: 'Sales by product',
+                data: Object.values(data)
               }
             ]
           }

@@ -10,5 +10,7 @@ class HomeController < ApplicationController
     ]
 
     @data_values = [0,10,5,2,20,30,45]
+
+    @ventas = Venta.sales_by_product
   end
 end

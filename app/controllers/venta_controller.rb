@@ -1,9 +1,9 @@
 class VentaController < ApplicationController
-  before_action :set_ventum, only: %i[ show edit update destroy ]
+  before_action :set_venta, only: %i[ show edit update destroy ]
 
   # GET /venta or /venta.json
   def index
-    @venta = Ventum.all
+    @venta = Venta.sales_by_product
   end
 
   # GET /venta/1 or /venta/1.json
@@ -12,7 +12,7 @@ class VentaController < ApplicationController
 
   # GET /venta/new
   def new
-    @ventum = Ventum.new
+    @venta = Venta.new
   end
 
   # GET /venta/1/edit
@@ -21,15 +21,15 @@ class VentaController < ApplicationController
 
   # POST /venta or /venta.json
   def create
-    @ventum = Ventum.new(ventum_params)
+    @venta = Venta.new(venta_params)
 
     respond_to do |format|
-      if @ventum.save
-        format.html { redirect_to ventum_url(@ventum), notice: "Ventum was successfully created." }
-        format.json { render :show, status: :created, location: @ventum }
+      if @venta.save
+        format.html { redirect_to Venta_url(@venta), notice: "Venta was successfully created." }
+        format.json { render :show, status: :created, location: @venta }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @ventum.errors, status: :unprocessable_entity }
+        format.json { render json: @venta.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,34 +37,34 @@ class VentaController < ApplicationController
   # PATCH/PUT /venta/1 or /venta/1.json
   def update
     respond_to do |format|
-      if @ventum.update(ventum_params)
-        format.html { redirect_to ventum_url(@ventum), notice: "Ventum was successfully updated." }
-        format.json { render :show, status: :ok, location: @ventum }
+      if @venta.update(Venta_params)
+        format.html { redirect_to Venta_url(@venta), notice: "venta was successfully updated." }
+        format.json { render :show, status: :ok, location: @venta }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @ventum.errors, status: :unprocessable_entity }
+        format.json { render json: @venta.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /venta/1 or /venta/1.json
   def destroy
-    @ventum.destroy!
+    @venta.destroy!
 
     respond_to do |format|
-      format.html { redirect_to venta_url, notice: "Ventum was successfully destroyed." }
+      format.html { redirect_to venta_url, notice: "venta was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_ventum
-      @ventum = Ventum.find(params[:id])
+    def set_venta
+      @venta = Venta.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def ventum_params
-      params.require(:ventum).permit(:date, :article_id, :sale_price)
+    def venta_params
+      params.require(:venta).permit(:date, :article_id, :sale_price)
     end
 end
